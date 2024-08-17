@@ -1,14 +1,18 @@
 import { IoSearch } from "react-icons/io5";
 import toast from 'react-hot-toast';
 import css from './SearchBar.module.css'
+import { FormEvent } from 'react';
 
+interface onSearchProps  {
+  onSearch: (query: string) => void;
+}
 
-const SearchBar = ({ onSearch }) => {
-    const handleSubmit = (evt) => {
+const SearchBar = ({ onSearch }: onSearchProps) => {
+    const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-    const form = evt.target;
-		const query = form.elements.query.value;
-		if(form.elements.query.value.trim() === "") {
+    const form = evt.target as HTMLFormElement;
+		const query = form.query.value;
+		if(form.query.value.trim() === "") {
             toast('Please enter a search query!',
                 {
                     style: {

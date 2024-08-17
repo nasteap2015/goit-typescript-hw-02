@@ -10,18 +10,34 @@ import toast, { Toaster } from 'react-hot-toast';
 
 import './App.css'
 
-function App() {
-  const [images, setImages] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [page, setPage] = useState(1);
-  const [showBtn, setShowBtn] = useState(false);
-  const [query, setQuery] = useState("");
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const [modalUrl, setModalUrl] = useState('');
-  const [modalDesc, setModalDesc] = useState('');
+export interface Image {
+  id: string;
+  description: string;
+  alt_description: string;
+  likes: number;
+  tags: [
+        {
+            title: string,
+        },
+    ],   
+  urls: {
+    small: string;
+    regular: string;
+  }    
+}
 
-  function openModal(imageUrl, imageDescription) {
+function App() {
+  const [images, setImages] = useState<Image[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(1);
+  const [showBtn, setShowBtn] = useState<boolean>(false);
+  const [query, setQuery] = useState<string>("");
+  const [modalIsOpen, setIsOpen] = useState<boolean>(false);
+  const [modalUrl, setModalUrl] = useState<string>('');
+  const [modalDesc, setModalDesc] = useState<string>('');
+
+  function openModal(imageUrl: string, imageDescription: string) {
     setIsOpen(true);
     setModalUrl(imageUrl);
     setModalDesc(imageDescription);
@@ -48,7 +64,7 @@ function App() {
           setImages(prevState => {
             return [...prevState, ...results];
           });
-          setShowBtn(total_pages && total_pages !== page);
+          setShowBtn(total_pages > page);
         }
       } catch (error) {
         setError(true);
@@ -60,7 +76,7 @@ function App() {
   }, [query, page]
   );
     
-    const handleSearch = async query => {
+    const handleSearch = async (query: string) => {
       setQuery(query);
       setPage(1);
       setImages([]);

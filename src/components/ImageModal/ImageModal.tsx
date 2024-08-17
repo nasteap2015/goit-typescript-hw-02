@@ -3,12 +3,18 @@ import css from './ImageModal.module.css'
 
 Modal.setAppElement("#root");
 
-const ImageModal = ({ isOpen, onRequestClose, style, imageU,imageDesc }) => {
+interface ImageModalProp {
+  isOpen: boolean;
+  onRequestClose: () => void;
+  imageU: string;
+  imageDesc: string;
+}
+
+const ImageModal = ({ isOpen, onRequestClose, imageU,imageDesc } : ImageModalProp) => {
     return (
         <Modal
         isOpen={isOpen}
         onRequestClose={onRequestClose}
-        style={style}
         className={css.modal}
         overlayClassName={css.overlay}
         >
