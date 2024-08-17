@@ -1,0 +1,23 @@
+.imageContainer{
+    border: 1px solid #D3D3D3;
+    border-radius: 5px;
+    padding-bottom: 8px;
+    transition: transform 200ms linear;
+}
+
+.image{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+
+    border-radius: 5px;
+    margin-bottom: 8px;
+}
+
+.imageContainer:hover{
+    transform: scale(1.05);
+}
+
+.descriptionCategory{
+    font-weight: 600;
+}

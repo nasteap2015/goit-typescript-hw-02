@@ -1,0 +1,39 @@
+.headerContainer{
+    width: 100%;
+    background-color: #6495ED;
+    padding: 20px 0;
+    margin-bottom: 16px;
+}
+
+.form{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    background-color: #ffff;
+    border-radius: 5px;
+    padding: 8px;
+    width:fit-content
+}
+
+.searchButton{
+    order: 1;
+    border: none;
+    background-color: #ffff;
+
+}
+
+.input{
+    order: 2;
+    border: none;
+    background-color: #ffff;
+    outline: none;
+    width: 250px;
+}
+
+.buttonIcon{
+    transition: transform 200ms linear;
+}
+
+.searchButton:hover .buttonIcon {
+    transform: scale(1.15);
+}
